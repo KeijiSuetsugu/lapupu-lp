@@ -59,7 +59,14 @@ export interface FooterData {
   copyright: string;
 }
 
+export interface SiteSettings {
+  heroSize: 'sm' | 'md' | 'lg';
+  headingSize: 'sm' | 'md' | 'lg';
+  bodySize: 'sm' | 'md' | 'lg';
+}
+
 export interface ContentData {
+  settings: SiteSettings;
   hero: HeroData;
   concept: ConceptData;
   features: FeatureItem[];

@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { ConceptData } from "@/lib/types";
+import { ConceptData, SiteSettings } from "@/lib/types";
+import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
 
 interface Props {
   data: ConceptData;
+  settings?: SiteSettings;
 }
 
-export default function ConceptSection({ data }: Props) {
+export default function ConceptSection({ data, settings }: Props) {
   const lines = data.body.split("\n");
 
   return (
@@ -39,11 +41,11 @@ export default function ConceptSection({ data }: Props) {
             <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
               Concept
             </p>
-            <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy mb-8 leading-snug">
+            <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy mb-8 leading-snug`}>
               {data.title}
             </h2>
             <div className="h-px w-12 bg-lapupu-gold mb-8" />
-            <div className="space-y-4 text-gray-600 font-light leading-relaxed">
+            <div className={`space-y-4 text-gray-600 font-light leading-relaxed ${getBodySize(settings)}`}>
               {lines.map((line, i) => (
                 <p key={i}>{line}</p>
               ))}

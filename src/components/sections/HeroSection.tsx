@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { HeroData } from "@/lib/types";
+import { HeroData, SiteSettings } from "@/lib/types";
+import { getHeroSize } from "@/lib/fontSizes";
 
 interface Props {
   data: HeroData;
+  settings?: SiteSettings;
 }
 
-export default function HeroSection({ data }: Props) {
+export default function HeroSection({ data, settings }: Props) {
   const lines = data.catchcopy.split("\n");
 
   return (
@@ -36,7 +38,7 @@ export default function HeroSection({ data }: Props) {
         </p>
 
         {/* Main catchcopy */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-6 tracking-wide">
+        <h1 className={`${getHeroSize(settings)} font-light leading-tight mb-6 tracking-wide`}>
           {lines.map((line, i) => (
             <span key={i} className="block">
               {line}

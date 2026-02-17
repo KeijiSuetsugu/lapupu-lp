@@ -1,8 +1,10 @@
 import { Sparkles, Heart, Clock, Star, Leaf, Shield } from "lucide-react";
-import { FeatureItem } from "@/lib/types";
+import { FeatureItem, SiteSettings } from "@/lib/types";
+import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
 
 interface Props {
   data: FeatureItem[];
+  settings?: SiteSettings;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -14,7 +16,7 @@ const iconMap: Record<string, React.ElementType> = {
   shield: Shield,
 };
 
-export default function FeaturesSection({ data }: Props) {
+export default function FeaturesSection({ data, settings }: Props) {
   return (
     <section className="section-padding bg-luxury-warm">
       <div className="container-max">
@@ -23,7 +25,7 @@ export default function FeaturesSection({ data }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Features
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
+          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
             Lapupuが選ばれる理由
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -44,7 +46,7 @@ export default function FeaturesSection({ data }: Props) {
                 <h3 className="text-lg font-medium text-lapupu-navy mb-4 leading-snug">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 font-light leading-relaxed text-sm whitespace-pre-wrap">
+                <p className={`text-gray-500 font-light leading-relaxed ${getBodySize(settings)} whitespace-pre-wrap`}>
                   {feature.body}
                 </p>
               </div>

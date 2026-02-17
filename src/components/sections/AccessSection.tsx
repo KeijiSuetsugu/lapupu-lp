@@ -1,11 +1,13 @@
 import { MapPin, Phone, Clock } from "lucide-react";
-import { AccessData } from "@/lib/types";
+import { AccessData, SiteSettings } from "@/lib/types";
+import { getHeadingSize } from "@/lib/fontSizes";
 
 interface Props {
   data: AccessData;
+  settings?: SiteSettings;
 }
 
-export default function AccessSection({ data }: Props) {
+export default function AccessSection({ data, settings }: Props) {
   return (
     <section className="section-padding bg-luxury-warm">
       <div className="container-max">
@@ -14,7 +16,7 @@ export default function AccessSection({ data }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Access
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
+          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
             アクセス
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />

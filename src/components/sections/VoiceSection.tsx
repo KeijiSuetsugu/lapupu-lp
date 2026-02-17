@@ -1,11 +1,13 @@
 import { Star } from "lucide-react";
-import { VoiceItem } from "@/lib/types";
+import { VoiceItem, SiteSettings } from "@/lib/types";
+import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
 
 interface Props {
   data: VoiceItem[];
+  settings?: SiteSettings;
 }
 
-export default function VoiceSection({ data }: Props) {
+export default function VoiceSection({ data, settings }: Props) {
   return (
     <section className="section-padding bg-luxury-navy">
       <div className="container-max">
@@ -14,7 +16,7 @@ export default function VoiceSection({ data }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Voice
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-white">
+          <h2 className={`${getHeadingSize(settings)} font-light text-white`}>
             お客様の声
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -40,7 +42,7 @@ export default function VoiceSection({ data }: Props) {
               </div>
 
               {/* Text */}
-              <p className="text-white/80 font-light leading-relaxed text-sm mb-6 whitespace-pre-wrap">
+              <p className={`text-white/80 font-light leading-relaxed ${getBodySize(settings)} mb-6 whitespace-pre-wrap`}>
                 {voice.text}
               </p>
 

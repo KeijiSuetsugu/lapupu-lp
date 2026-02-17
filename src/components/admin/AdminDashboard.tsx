@@ -13,6 +13,7 @@ import StaffEditor from "./editors/StaffEditor";
 import AccessEditor from "./editors/AccessEditor";
 import ContactEditor from "./editors/ContactEditor";
 import FooterEditor from "./editors/FooterEditor";
+import SettingsEditor from "./editors/SettingsEditor";
 
 interface Props {
   initialContent: ContentData;
@@ -103,7 +104,14 @@ export default function AdminDashboard({ initialContent }: Props) {
 
         {/* Section editors */}
         <div className="space-y-4">
-          <SectionEditor title="Hero（ファーストビュー）" defaultOpen>
+          <SectionEditor title="サイト設定（文字サイズ）" defaultOpen>
+            <SettingsEditor
+              data={content.settings}
+              onChange={(settings) => setContent({ ...content, settings })}
+            />
+          </SectionEditor>
+
+          <SectionEditor title="Hero（ファーストビュー）">
             <HeroEditor
               data={content.hero}
               onChange={(hero) => setContent({ ...content, hero })}

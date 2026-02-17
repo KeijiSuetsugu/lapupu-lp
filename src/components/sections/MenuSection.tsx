@@ -1,10 +1,12 @@
-import { MenuItem } from "@/lib/types";
+import { MenuItem, SiteSettings } from "@/lib/types";
+import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
 
 interface Props {
   data: MenuItem[];
+  settings?: SiteSettings;
 }
 
-export default function MenuSection({ data }: Props) {
+export default function MenuSection({ data, settings }: Props) {
   return (
     <section className="section-padding bg-luxury-gradient">
       <div className="container-max">
@@ -13,7 +15,7 @@ export default function MenuSection({ data }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Menu & Price
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
+          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
             メニュー・料金
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -31,7 +33,7 @@ export default function MenuSection({ data }: Props) {
                   <h3 className="text-lg font-medium text-lapupu-navy mb-2 group-hover:text-lapupu-navy-dark">
                     {item.name}
                   </h3>
-                  <p className="text-gray-500 font-light text-sm leading-relaxed whitespace-pre-wrap">
+                  <p className={`text-gray-500 font-light ${getBodySize(settings)} leading-relaxed whitespace-pre-wrap`}>
                     {item.description}
                   </p>
                 </div>

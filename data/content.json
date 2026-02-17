@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "heroSize": "md",
+    "headingSize": "md",
+    "bodySize": "md"
+  },
   "hero": {
     "catchcopy": "首・肩・頭が\nふっと軽くなる\nヘッドケア専門サロン",
     "subtext": "北九州市 | Lapupu",
