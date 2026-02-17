@@ -7,7 +7,7 @@ interface Props {
 
 export default function AccessSection({ data }: Props) {
   return (
-    <section className="section-padding bg-lapupu-beige">
+    <section className="section-padding bg-luxury-warm">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">

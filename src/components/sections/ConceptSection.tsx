@@ -9,7 +9,7 @@ export default function ConceptSection({ data }: Props) {
   const lines = data.body.split("\n");
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-luxury-light">
       <div className="container-max">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
@@ -29,8 +29,9 @@ export default function ConceptSection({ data }: Props) {
                 </div>
               </div>
             )}
-            {/* Decorative border */}
-            <div className="absolute inset-0 border border-lapupu-gold/20 m-4 pointer-events-none" />
+            {/* Decorative double border */}
+            <div className="absolute inset-0 border border-lapupu-gold/30 m-3 pointer-events-none" />
+            <div className="absolute inset-0 border border-lapupu-gold/15 m-5 pointer-events-none" />
           </div>
 
           {/* Text */}

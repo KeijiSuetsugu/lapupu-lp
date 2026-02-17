@@ -8,7 +8,7 @@ export default function ContactSection({ data }: Props) {
   const lines = data.reservationNote.split("\n");
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-luxury-contact">
       <div className="container-max">
         <div className="max-w-2xl mx-auto text-center">
           {/* Header */}

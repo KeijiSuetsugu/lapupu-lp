@@ -6,7 +6,7 @@ interface Props {
 
 export default function MenuSection({ data }: Props) {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-luxury-gradient">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
@@ -24,7 +24,7 @@ export default function MenuSection({ data }: Props) {
           {data.map((item, i) => (
             <div
               key={i}
-              className="border border-gray-100 p-6 md:p-8 hover:border-lapupu-gold/40 transition-colors duration-300 group"
+              className="border border-lapupu-gold/10 bg-white p-6 md:p-8 hover:border-lapupu-gold/40 hover:shadow-lg hover:shadow-lapupu-gold/5 transition-all duration-500 group"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                 <div className="flex-1">

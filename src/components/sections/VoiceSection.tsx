@@ -7,7 +7,7 @@ interface Props {
 
 export default function VoiceSection({ data }: Props) {
   return (
-    <section className="section-padding bg-lapupu-navy">
+    <section className="section-padding bg-luxury-navy">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
@@ -23,7 +23,7 @@ export default function VoiceSection({ data }: Props) {
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {data.map((voice, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 p-8 backdrop-blur-sm">
+            <div key={i} className="bg-white/5 border border-lapupu-gold/10 p-8 backdrop-blur-sm hover:border-lapupu-gold/30 hover:bg-white/8 transition-all duration-500">
               {/* Rating */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: voice.rating }).map((_, j) => (

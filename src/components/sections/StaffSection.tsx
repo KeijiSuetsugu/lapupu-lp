@@ -7,7 +7,7 @@ interface Props {
 
 export default function StaffSection({ data }: Props) {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-luxury-light">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
@@ -25,7 +25,7 @@ export default function StaffSection({ data }: Props) {
           {data.map((member, i) => (
             <div key={i} className="max-w-sm text-center">
               {/* Photo */}
-              <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-4 border-lapupu-beige">
+              <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-2 border-lapupu-gold/30 shadow-lg shadow-lapupu-gold/10">
                 {member.imageUrl && member.imageUrl !== "/images/staff-1.jpg" ? (
                   <Image
                     src={member.imageUrl}

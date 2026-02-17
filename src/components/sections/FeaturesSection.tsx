@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function FeaturesSection({ data }: Props) {
   return (
-    <section className="section-padding bg-lapupu-beige">
+    <section className="section-padding bg-luxury-warm">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
@@ -36,7 +36,7 @@ export default function FeaturesSection({ data }: Props) {
             return (
               <div
                 key={i}
-                className="bg-white p-8 text-center group hover:shadow-lg transition-shadow duration-300"
+                className="bg-white p-8 text-center group hover:shadow-xl hover:shadow-lapupu-gold/10 transition-all duration-500 border border-transparent hover:border-lapupu-gold/20"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-lapupu-beige mb-6 group-hover:bg-lapupu-navy transition-colors duration-300">
                   <Icon className="w-7 h-7 text-lapupu-navy group-hover:text-white transition-colors duration-300" />
