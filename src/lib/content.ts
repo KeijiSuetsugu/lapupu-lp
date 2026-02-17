@@ -1,6 +1,12 @@
 import { Redis } from '@upstash/redis';
-import type { ContentData } from './types';
+import type { ContentData, SiteSettings } from './types';
 import defaultContent from '../../data/content.json';
+
+const defaultSettings: SiteSettings = {
+  heroSize: 'md',
+  headingSize: 'md',
+  bodySize: 'md',
+};
 
 export async function getContent(): Promise<ContentData> {
   const url = process.env.UPSTASH_REDIS_REST_URL;
@@ -10,7 +16,13 @@ export async function getContent(): Promise<ContentData> {
     try {
       const redis = new Redis({ url, token });
       const data = await redis.get<ContentData>('content');
-      if (data) return data;
+      if (data) {
+        // 既存データにsettingsがない場合はデフォルト値を補完
+        if (!data.settings) {
+          data.settings = defaultSettings;
+        }
+        return data;
+      }
     } catch {
       // Redis接続エラー時はデフォルトにフォールバック
     }
