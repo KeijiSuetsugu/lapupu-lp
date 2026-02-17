@@ -24,7 +24,7 @@ export default function FeaturesSection({ data }: Props) {
             Features
           </p>
           <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
-            Lapuppuが選ばれる理由
+            Lapupuが選ばれる理由
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
         </div>
