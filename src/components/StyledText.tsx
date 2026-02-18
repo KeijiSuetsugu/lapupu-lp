@@ -14,7 +14,11 @@ export default function StyledText({
   className,
 }: Props) {
   if (!charSizes || charSizes.length === 0) {
-    return <span className={className}>{text}</span>;
+    return (
+      <span className={className} style={{ whiteSpace: "pre-wrap" }}>
+        {text}
+      </span>
+    );
   }
 
   const chars = Array.from(text);
