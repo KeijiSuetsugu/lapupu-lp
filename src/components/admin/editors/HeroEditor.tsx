@@ -10,9 +10,11 @@ interface Props {
   onChange: (data: HeroData) => void;
   charStyles: Record<string, number[]>;
   onCharStyleChange: (key: string, sizes: number[]) => void;
+  imagePositions: Record<string, { x: number; y: number }>;
+  onImagePositionChange: (key: string, pos: { x: number; y: number }) => void;
 }
 
-export default function HeroEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
+export default function HeroEditor({ data, onChange, charStyles, onCharStyleChange, imagePositions, onImagePositionChange }: Props) {
   const update = (key: keyof HeroData, value: string) => {
     onChange({ ...data, [key]: value });
   };
@@ -78,6 +80,8 @@ export default function HeroEditor({ data, onChange, charStyles, onCharStyleChan
         <ImageUploader
           currentUrl={data.bgImageUrl}
           onUpload={(url) => update("bgImageUrl", url)}
+          position={imagePositions["hero.bgImage"]}
+          onPositionChange={(pos) => onImagePositionChange("hero.bgImage", pos)}
         />
       </Field>
     </div>

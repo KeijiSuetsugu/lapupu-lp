@@ -11,9 +11,11 @@ interface Props {
   onChange: (data: StaffItem[]) => void;
   charStyles: Record<string, number[]>;
   onCharStyleChange: (key: string, sizes: number[]) => void;
+  imagePositions: Record<string, { x: number; y: number }>;
+  onImagePositionChange: (key: string, pos: { x: number; y: number }) => void;
 }
 
-export default function StaffEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
+export default function StaffEditor({ data, onChange, charStyles, onCharStyleChange, imagePositions, onImagePositionChange }: Props) {
   const updateItem = (index: number, key: keyof StaffItem, value: string) => {
     const updated = data.map((item, i) =>
       i === index ? { ...item, [key]: value } : item
@@ -92,6 +94,8 @@ export default function StaffEditor({ data, onChange, charStyles, onCharStyleCha
               <ImageUploader
                 currentUrl={item.imageUrl}
                 onUpload={(url) => updateItem(i, "imageUrl", url)}
+                position={imagePositions[`staff.${i}.image`]}
+                onPositionChange={(pos) => onImagePositionChange(`staff.${i}.image`, pos)}
               />
             </Field>
           </div>

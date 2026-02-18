@@ -10,9 +10,11 @@ interface Props {
   onChange: (data: ConceptData) => void;
   charStyles: Record<string, number[]>;
   onCharStyleChange: (key: string, sizes: number[]) => void;
+  imagePositions: Record<string, { x: number; y: number }>;
+  onImagePositionChange: (key: string, pos: { x: number; y: number }) => void;
 }
 
-export default function ConceptEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
+export default function ConceptEditor({ data, onChange, charStyles, onCharStyleChange, imagePositions, onImagePositionChange }: Props) {
   const update = (key: keyof ConceptData, value: string) => {
     onChange({ ...data, [key]: value });
   };
@@ -56,6 +58,8 @@ export default function ConceptEditor({ data, onChange, charStyles, onCharStyleC
         <ImageUploader
           currentUrl={data.imageUrl}
           onUpload={(url) => update("imageUrl", url)}
+          position={imagePositions["concept.image"]}
+          onPositionChange={(pos) => onImagePositionChange("concept.image", pos)}
         />
       </Field>
     </div>

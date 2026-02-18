@@ -5,9 +5,10 @@ import StyledText from "@/components/StyledText";
 interface Props {
   data: StaffItem[];
   charStyles?: Record<string, number[]>;
+  imagePositions?: Record<string, { x: number; y: number }>;
 }
 
-export default function StaffSection({ data, charStyles = {} }: Props) {
+export default function StaffSection({ data, charStyles = {}, imagePositions = {} }: Props) {
   return (
     <section className="section-padding bg-organic-light">
       <div className="container-max">
@@ -34,6 +35,7 @@ export default function StaffSection({ data, charStyles = {} }: Props) {
                     alt={member.name}
                     fill
                     className="object-cover"
+                    style={imagePositions[`staff.${i}.image`] ? { objectPosition: `${imagePositions[`staff.${i}.image`].x}% ${imagePositions[`staff.${i}.image`].y}%` } : undefined}
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-lapupu-cream to-lapupu-green/20 flex items-center justify-center">

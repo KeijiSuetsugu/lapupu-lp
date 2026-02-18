@@ -7,9 +7,10 @@ import StyledText from "@/components/StyledText";
 interface Props {
   data: HeroData;
   charStyles?: Record<string, number[]>;
+  imagePositions?: Record<string, { x: number; y: number }>;
 }
 
-export default function HeroSection({ data, charStyles = {} }: Props) {
+export default function HeroSection({ data, charStyles = {}, imagePositions = {} }: Props) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -20,6 +21,7 @@ export default function HeroSection({ data, charStyles = {} }: Props) {
             alt="Lapupu ヘッドケアサロン"
             fill
             className="object-cover"
+            style={imagePositions["hero.bgImage"] ? { objectPosition: `${imagePositions["hero.bgImage"].x}% ${imagePositions["hero.bgImage"].y}%` } : undefined}
             priority
           />
         ) : (

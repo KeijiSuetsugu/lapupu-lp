@@ -26,11 +26,19 @@ export default function AdminDashboard({ initialContent }: Props) {
   const router = useRouter();
 
   const charStyles = content.charStyles ?? {};
+  const imagePositions = content.imagePositions ?? {};
 
   const updateCharStyle = (key: string, sizes: number[]) => {
     setContent({
       ...content,
       charStyles: { ...charStyles, [key]: sizes },
+    });
+  };
+
+  const updateImagePosition = (key: string, pos: { x: number; y: number }) => {
+    setContent({
+      ...content,
+      imagePositions: { ...imagePositions, [key]: pos },
     });
   };
 
@@ -118,6 +126,8 @@ export default function AdminDashboard({ initialContent }: Props) {
               onChange={(hero) => setContent({ ...content, hero })}
               charStyles={charStyles}
               onCharStyleChange={updateCharStyle}
+              imagePositions={imagePositions}
+              onImagePositionChange={updateImagePosition}
             />
           </SectionEditor>
 
@@ -127,6 +137,8 @@ export default function AdminDashboard({ initialContent }: Props) {
               onChange={(concept) => setContent({ ...content, concept })}
               charStyles={charStyles}
               onCharStyleChange={updateCharStyle}
+              imagePositions={imagePositions}
+              onImagePositionChange={updateImagePosition}
             />
           </SectionEditor>
 
@@ -163,6 +175,8 @@ export default function AdminDashboard({ initialContent }: Props) {
               onChange={(staff) => setContent({ ...content, staff })}
               charStyles={charStyles}
               onCharStyleChange={updateCharStyle}
+              imagePositions={imagePositions}
+              onImagePositionChange={updateImagePosition}
             />
           </SectionEditor>
 

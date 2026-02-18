@@ -5,9 +5,10 @@ import StyledText from "@/components/StyledText";
 interface Props {
   data: ConceptData;
   charStyles?: Record<string, number[]>;
+  imagePositions?: Record<string, { x: number; y: number }>;
 }
 
-export default function ConceptSection({ data, charStyles = {} }: Props) {
+export default function ConceptSection({ data, charStyles = {}, imagePositions = {} }: Props) {
   return (
     <section className="section-padding bg-organic-light">
       <div className="container-max">
@@ -20,6 +21,7 @@ export default function ConceptSection({ data, charStyles = {} }: Props) {
                 alt="Lapupu コンセプト"
                 fill
                 className="object-cover"
+                style={imagePositions["concept.image"] ? { objectPosition: `${imagePositions["concept.image"].x}% ${imagePositions["concept.image"].y}%` } : undefined}
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-lapupu-cream to-lapupu-green/20 flex items-center justify-center">

@@ -24,6 +24,9 @@ export async function getContent(): Promise<ContentData> {
         if (!data.charStyles) {
           data.charStyles = {};
         }
+        if (!data.imagePositions) {
+          data.imagePositions = {};
+        }
         return data;
       }
     } catch {
