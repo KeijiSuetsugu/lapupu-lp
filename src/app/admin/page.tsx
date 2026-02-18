@@ -29,25 +29,25 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-lapupu-beige flex items-center justify-center px-6">
+    <div className="min-h-screen bg-lapupu-cream flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-10">
-          <h1 className="text-2xl font-light text-lapupu-navy tracking-[0.3em] mb-2">
+          <h1 className="text-2xl font-light text-lapupu-brown tracking-[0.3em] mb-2">
             LAPUPU
           </h1>
-          <p className="text-xs text-gray-400 tracking-widest">ADMIN PANEL</p>
+          <p className="text-xs text-lapupu-brown-light/60 tracking-widest">ADMIN PANEL</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white p-8 shadow-sm">
-          <label className="block text-xs text-lapupu-navy tracking-[0.2em] mb-3 uppercase">
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-sm">
+          <label className="block text-xs text-lapupu-brown tracking-[0.2em] mb-3 uppercase">
             Password
           </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-lapupu-navy transition-colors"
+            className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-lapupu-brown transition-colors"
             placeholder="管理パスワードを入力"
             required
           />
@@ -59,13 +59,13 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-6 bg-lapupu-navy text-white py-3 text-sm tracking-[0.2em] hover:bg-lapupu-navy-dark transition-colors duration-200 disabled:opacity-50"
+            className="w-full mt-6 bg-lapupu-brown text-white py-3 rounded-full text-sm tracking-[0.2em] hover:bg-lapupu-brown-dark transition-colors duration-200 disabled:opacity-50"
           >
             {loading ? "確認中..." : "ログイン"}
           </button>
         </form>
 
-        <p className="text-center text-xs text-gray-300 mt-6 tracking-wider">
+        <p className="text-center text-xs text-lapupu-brown/30 mt-6 tracking-wider">
           Lapupu Management System
         </p>
       </div>

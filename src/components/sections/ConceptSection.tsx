@@ -9,11 +9,11 @@ interface Props {
 
 export default function ConceptSection({ data, charStyles = {} }: Props) {
   return (
-    <section className="section-padding bg-luxury-light">
+    <section className="section-padding bg-organic-light">
       <div className="container-max">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
-          <div className="relative aspect-[4/5] bg-lapupu-beige overflow-hidden">
+          <div className="relative aspect-[4/5] bg-lapupu-cream overflow-hidden rounded-[30%_70%_70%_30%/30%_30%_70%_70%]">
             {data.imageUrl && data.imageUrl !== "/images/concept.jpg" ? (
               <Image
                 src={data.imageUrl}
@@ -22,32 +22,29 @@ export default function ConceptSection({ data, charStyles = {} }: Props) {
                 className="object-cover"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-lapupu-beige to-lapupu-navy/10 flex items-center justify-center">
-                <div className="text-center text-lapupu-navy/30">
-                  <div className="text-6xl mb-4">✦</div>
+              <div className="w-full h-full bg-gradient-to-br from-lapupu-cream to-lapupu-green/20 flex items-center justify-center">
+                <div className="text-center text-lapupu-brown/30">
+                  <div className="text-6xl mb-4">🌿</div>
                   <p className="text-sm tracking-widest">PHOTO</p>
                 </div>
               </div>
             )}
-            {/* Decorative double border */}
-            <div className="absolute inset-0 border border-lapupu-gold/30 m-3 pointer-events-none" />
-            <div className="absolute inset-0 border border-lapupu-gold/15 m-5 pointer-events-none" />
           </div>
 
           {/* Text */}
           <div>
-            <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
+            <p className="text-lapupu-green text-xs tracking-[0.4em] mb-4 uppercase">
               Concept
             </p>
-            <h2 className="font-light text-lapupu-navy mb-8 leading-snug">
+            <h2 className="font-light text-lapupu-brown mb-8 leading-snug">
               <StyledText
                 text={data.title}
                 charSizes={charStyles["concept.title"]}
                 defaultSize={30}
               />
             </h2>
-            <div className="h-px w-12 bg-lapupu-gold mb-8" />
-            <div className="text-gray-600 font-light leading-relaxed">
+            <div className="h-px w-12 bg-lapupu-green mb-8" />
+            <div className="text-lapupu-brown-light font-light leading-relaxed">
               <StyledText
                 text={data.body}
                 charSizes={charStyles["concept.body"]}

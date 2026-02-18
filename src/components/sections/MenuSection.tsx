@@ -8,17 +8,17 @@ interface Props {
 
 export default function MenuSection({ data, charStyles = {} }: Props) {
   return (
-    <section className="section-padding bg-luxury-gradient">
+    <section className="section-padding bg-organic-cream">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
+          <p className="text-lapupu-green text-xs tracking-[0.4em] mb-4 uppercase">
             Menu & Price
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-brown">
             メニュー・料金
           </h2>
-          <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
+          <div className="h-px w-12 bg-lapupu-green mx-auto mt-6" />
         </div>
 
         {/* Menu items */}
@@ -26,18 +26,18 @@ export default function MenuSection({ data, charStyles = {} }: Props) {
           {data.map((item, i) => (
             <div
               key={i}
-              className="border border-lapupu-gold/10 bg-white p-6 md:p-8 hover:border-lapupu-gold/40 hover:shadow-lg hover:shadow-lapupu-gold/5 transition-all duration-500 group"
+              className="bg-white rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-500"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                 <div className="flex-1">
-                  <h3 className="font-medium text-lapupu-navy mb-2 group-hover:text-lapupu-navy-dark">
+                  <h3 className="font-medium text-lapupu-brown mb-2">
                     <StyledText
                       text={item.name}
                       charSizes={charStyles[`menu.${i}.name`]}
                       defaultSize={18}
                     />
                   </h3>
-                  <p className="text-gray-500 font-light leading-relaxed">
+                  <p className="text-lapupu-brown-light font-light leading-relaxed">
                     <StyledText
                       text={item.description}
                       charSizes={charStyles[`menu.${i}.description`]}
@@ -46,7 +46,7 @@ export default function MenuSection({ data, charStyles = {} }: Props) {
                   </p>
                 </div>
                 <div className="md:ml-8 flex-shrink-0">
-                  <span className="font-light text-lapupu-navy tracking-wider">
+                  <span className="font-light text-lapupu-green tracking-wider">
                     <StyledText
                       text={item.price}
                       charSizes={charStyles[`menu.${i}.price`]}
@@ -60,7 +60,7 @@ export default function MenuSection({ data, charStyles = {} }: Props) {
         </div>
 
         {/* Note */}
-        <p className="text-center text-gray-400 text-xs mt-8 tracking-wide">
+        <p className="text-center text-lapupu-brown-light/60 text-xs mt-8 tracking-wide">
           ※ 料金はすべて税込みです
         </p>
       </div>

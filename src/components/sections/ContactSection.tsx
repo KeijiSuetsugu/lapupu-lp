@@ -8,20 +8,20 @@ interface Props {
 
 export default function ContactSection({ data, charStyles = {} }: Props) {
   return (
-    <section className="section-padding bg-luxury-contact">
+    <section className="section-padding bg-organic-cream">
       <div className="container-max">
         <div className="max-w-2xl mx-auto text-center">
           {/* Header */}
-          <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
+          <p className="text-lapupu-green text-xs tracking-[0.4em] mb-4 uppercase">
             Reservation
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy mb-6">
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-brown mb-6">
             ご予約・お問い合わせ
           </h2>
-          <div className="h-px w-12 bg-lapupu-gold mx-auto mb-10" />
+          <div className="h-px w-12 bg-lapupu-green mx-auto mb-10" />
 
           {/* Note */}
-          <div className="mb-10 text-gray-500 font-light leading-relaxed">
+          <div className="mb-10 text-lapupu-brown-light font-light leading-relaxed">
             <StyledText
               text={data.reservationNote}
               charSizes={charStyles["contact.reservationNote"]}
@@ -36,7 +36,7 @@ export default function ContactSection({ data, charStyles = {} }: Props) {
                 href={data.lineUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-[#06C755] text-white px-10 py-4 text-sm tracking-[0.2em] font-medium hover:bg-[#05a847] transition-colors duration-300"
+                className="inline-flex items-center justify-center gap-3 bg-[#06C755] text-white px-10 py-4 rounded-full text-sm tracking-[0.2em] font-medium hover:bg-[#05a847] transition-colors duration-300"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ export default function ContactSection({ data, charStyles = {} }: Props) {
                 href={data.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-10 py-4 text-sm tracking-[0.2em] font-medium hover:opacity-90 transition-opacity duration-300"
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-10 py-4 rounded-full text-sm tracking-[0.2em] font-medium hover:opacity-90 transition-opacity duration-300"
               >
                 <svg
                   viewBox="0 0 24 24"

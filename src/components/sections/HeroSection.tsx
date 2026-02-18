@@ -23,20 +23,20 @@ export default function HeroSection({ data, charStyles = {} }: Props) {
             priority
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-lapupu-navy-dark via-lapupu-navy to-lapupu-navy-light" />
+          <div className="w-full h-full bg-organic-cream" />
         )}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-lapupu-cream/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Label */}
-        <p className="text-sm md:text-base tracking-[0.3em] text-lapupu-gold mb-8 font-light uppercase">
+        <p className="text-sm md:text-base tracking-[0.3em] text-lapupu-green mb-8 font-light uppercase">
           Head Care Salon
         </p>
 
         {/* Main catchcopy */}
-        <h1 className="font-light leading-tight mb-6 tracking-wide">
+        <h1 className="font-medium text-lapupu-brown leading-tight mb-6 tracking-wide">
           <StyledText
             text={data.catchcopy}
             charSizes={charStyles["hero.catchcopy"]}
@@ -47,13 +47,13 @@ export default function HeroSection({ data, charStyles = {} }: Props) {
 
         {/* Divider */}
         <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-px w-16 bg-lapupu-gold/60" />
-          <div className="w-1.5 h-1.5 rounded-full bg-lapupu-gold/80" />
-          <div className="h-px w-16 bg-lapupu-gold/60" />
+          <div className="h-px w-16 bg-lapupu-green/50" />
+          <div className="w-1.5 h-1.5 rounded-full bg-lapupu-green/70" />
+          <div className="h-px w-16 bg-lapupu-green/50" />
         </div>
 
         {/* Subtext */}
-        <p className="text-white/80 mb-12 font-light tracking-wider">
+        <p className="text-lapupu-brown-light mb-12 font-light tracking-wider">
           <StyledText
             text={data.subtext}
             charSizes={charStyles["hero.subtext"]}
@@ -66,7 +66,7 @@ export default function HeroSection({ data, charStyles = {} }: Props) {
           href={data.ctaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-white text-lapupu-navy px-10 py-4 text-sm md:text-base tracking-[0.2em] font-medium hover:bg-lapupu-gold hover:text-white transition-all duration-300 group"
+          className="inline-flex items-center gap-3 bg-lapupu-green text-white px-10 py-4 text-sm md:text-base tracking-[0.2em] font-medium rounded-full hover:bg-lapupu-brown hover:text-white transition-all duration-300 shadow-md hover:shadow-lg group"
         >
           <span>
             <StyledText
@@ -93,8 +93,8 @@ export default function HeroSection({ data, charStyles = {} }: Props) {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <span className="text-white/60 text-xs tracking-[0.2em]">SCROLL</span>
-        <div className="w-px h-12 bg-white/30 animate-pulse" />
+        <span className="text-lapupu-brown-light/60 text-xs tracking-[0.2em]">SCROLL</span>
+        <div className="w-px h-12 bg-lapupu-brown-light/30 animate-pulse" />
       </div>
     </section>
   );

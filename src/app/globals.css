@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
+  --background: #f7f3e8;
+  --foreground: #5d574d;
 }
 
 body {
@@ -32,57 +32,36 @@ html {
 
 @layer components {
   .admin-input {
-    @apply w-full border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-lapupu-navy transition-colors bg-white;
+    @apply w-full border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-lapupu-brown transition-colors bg-white rounded-lg;
   }
 
-  /* 高級サロン風 背景テクスチャ */
-  .bg-luxury-light {
-    background-color: #faf7f2;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(200, 169, 110, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(25, 68, 142, 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(200, 169, 110, 0.04) 0%, transparent 50%);
+  /* Organic ナチュラル背景 */
+  .bg-organic-cream {
+    background-color: #f7f3e8;
   }
 
-  .bg-luxury-warm {
-    background: linear-gradient(170deg, #f5f0ea 0%, #faf7f2 40%, #f0ebe3 100%);
-    background-image:
-      radial-gradient(ellipse at 30% 0%, rgba(200, 169, 110, 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 100%, rgba(200, 169, 110, 0.05) 0%, transparent 60%),
-      linear-gradient(170deg, #f5f0ea 0%, #faf7f2 40%, #f0ebe3 100%);
+  .bg-organic-light {
+    background-color: #faf8f0;
   }
 
-  .bg-luxury-navy {
-    background: radial-gradient(ellipse at 50% 0%, #1a4a8a 0%, #0f2d5e 50%, #0a1f42 100%);
+  .bg-organic-warm {
+    background: linear-gradient(180deg, #f7f3e8 0%, #faf8f0 50%, #f5f1e6 100%);
   }
 
-  .bg-luxury-gradient {
-    background: linear-gradient(180deg, #ffffff 0%, #faf7f2 50%, #f5f0ea 100%);
+  .bg-organic-brown {
+    background-color: #4a443a;
   }
 
-  .bg-luxury-contact {
-    background: linear-gradient(180deg, #f5f0ea 0%, #ffffff 40%, #faf7f2 100%);
-    background-image:
-      radial-gradient(ellipse at 50% 0%, rgba(200, 169, 110, 0.06) 0%, transparent 50%),
-      linear-gradient(180deg, #f5f0ea 0%, #ffffff 40%, #faf7f2 100%);
+  .bg-organic-white {
+    background-color: #ffffff;
   }
 
-  /* ゴールド装飾区切り */
-  .ornament-divider {
-    @apply flex items-center justify-center gap-3 mx-auto;
+  /* 有機的なblob形状 */
+  .blob-shape-1 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 
-  .ornament-divider::before,
-  .ornament-divider::after {
-    content: '';
-    @apply h-px w-10 bg-gradient-to-r;
-  }
-
-  .ornament-divider::before {
-    background: linear-gradient(to right, transparent, #c8a96e);
-  }
-
-  .ornament-divider::after {
-    background: linear-gradient(to right, #c8a96e, transparent);
+  .blob-shape-2 {
+    border-radius: 24% 76% 28% 72% / 71% 28% 72% 29%;
   }
 }

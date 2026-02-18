@@ -9,22 +9,22 @@ interface Props {
 
 export default function AccessSection({ data, charStyles = {} }: Props) {
   return (
-    <section className="section-padding bg-luxury-warm">
+    <section className="section-padding bg-organic-warm">
       <div className="container-max">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
+          <p className="text-lapupu-green text-xs tracking-[0.4em] mb-4 uppercase">
             Access
           </p>
-          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-brown">
             アクセス
           </h2>
-          <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
+          <div className="h-px w-12 bg-lapupu-green mx-auto mt-6" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Map */}
-          <div className="aspect-video bg-lapupu-navy/10 overflow-hidden">
+          <div className="aspect-video bg-lapupu-brown/10 overflow-hidden rounded-2xl">
             {data.googleMapEmbedUrl ? (
               <iframe
                 src={data.googleMapEmbedUrl}
@@ -37,7 +37,7 @@ export default function AccessSection({ data, charStyles = {} }: Props) {
                 title="Lapupu アクセスマップ"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-lapupu-navy/30">
+              <div className="w-full h-full flex items-center justify-center text-lapupu-brown/30">
                 <div className="text-center">
                   <MapPin className="w-12 h-12 mx-auto mb-2" />
                   <p className="text-sm">地図を設定してください</p>
@@ -50,14 +50,14 @@ export default function AccessSection({ data, charStyles = {} }: Props) {
           <div className="space-y-8">
             {/* Address */}
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-navy/10 flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-lapupu-navy" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-green/15 flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-lapupu-green" />
               </div>
               <div>
-                <p className="text-xs tracking-[0.2em] text-lapupu-gold mb-1 uppercase">
+                <p className="text-xs tracking-[0.2em] text-lapupu-green mb-1 uppercase">
                   Address
                 </p>
-                <p className="text-lapupu-navy font-light leading-relaxed">
+                <p className="text-lapupu-brown font-light leading-relaxed">
                   <StyledText
                     text={data.address}
                     charSizes={charStyles["access.address"]}
@@ -69,14 +69,14 @@ export default function AccessSection({ data, charStyles = {} }: Props) {
 
             {/* Tel */}
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-navy/10 flex items-center justify-center">
-                <Phone className="w-5 h-5 text-lapupu-navy" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-green/15 flex items-center justify-center">
+                <Phone className="w-5 h-5 text-lapupu-green" />
               </div>
               <div>
-                <p className="text-xs tracking-[0.2em] text-lapupu-gold mb-1 uppercase">
+                <p className="text-xs tracking-[0.2em] text-lapupu-green mb-1 uppercase">
                   Contact
                 </p>
-                <p className="text-lapupu-navy font-light">
+                <p className="text-lapupu-brown font-light">
                   <StyledText
                     text={data.tel}
                     charSizes={charStyles["access.tel"]}
@@ -88,24 +88,24 @@ export default function AccessSection({ data, charStyles = {} }: Props) {
 
             {/* Hours */}
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-navy/10 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-lapupu-navy" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-lapupu-green/15 flex items-center justify-center">
+                <Clock className="w-5 h-5 text-lapupu-green" />
               </div>
               <div>
-                <p className="text-xs tracking-[0.2em] text-lapupu-gold mb-3 uppercase">
+                <p className="text-xs tracking-[0.2em] text-lapupu-green mb-3 uppercase">
                   Hours
                 </p>
                 <div className="space-y-2">
                   {data.hours.map((hour, i) => (
                     <div key={i} className="flex gap-4 text-sm">
-                      <span className="text-lapupu-navy/60 w-28 font-light">
+                      <span className="text-lapupu-brown/60 w-28 font-light">
                         <StyledText
                           text={hour.days}
                           charSizes={charStyles[`access.hours.${i}.days`]}
                           defaultSize={14}
                         />
                       </span>
-                      <span className="text-lapupu-navy font-medium">
+                      <span className="text-lapupu-brown font-medium">
                         <StyledText
                           text={hour.time}
                           charSizes={charStyles[`access.hours.${i}.time`]}

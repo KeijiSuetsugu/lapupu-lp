@@ -65,7 +65,7 @@ export default function AdminDashboard({ initialContent }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-lapupu-navy text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
+      <header className="bg-lapupu-brown text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
         <div>
           <h1 className="text-lg font-light tracking-[0.3em]">LAPUPU</h1>
           <p className="text-xs text-white/40 tracking-wider">管理画面</p>
@@ -103,7 +103,7 @@ export default function AdminDashboard({ initialContent }: Props) {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="bg-lapupu-navy text-white px-6 py-2.5 text-sm tracking-wider hover:bg-lapupu-navy-dark transition-colors disabled:opacity-50 min-w-[120px]"
+              className="bg-lapupu-brown text-white px-6 py-2.5 text-sm tracking-wider hover:bg-lapupu-brown-dark transition-colors disabled:opacity-50 min-w-[120px]"
             >
               {saving ? "保存中..." : "全体を保存"}
             </button>
@@ -199,7 +199,7 @@ export default function AdminDashboard({ initialContent }: Props) {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="bg-lapupu-navy text-white px-10 py-3 text-sm tracking-wider hover:bg-lapupu-navy-dark transition-colors disabled:opacity-50"
+            className="bg-lapupu-brown text-white px-10 py-3 text-sm tracking-wider hover:bg-lapupu-brown-dark transition-colors disabled:opacity-50"
           >
             {saving ? "保存中..." : "全体を保存"}
           </button>

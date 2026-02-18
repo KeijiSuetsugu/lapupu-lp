@@ -10,15 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         lapupu: {
-          navy: "#19448e",
-          "navy-dark": "#0f2d5e",
-          "navy-light": "#2d5da6",
-          beige: "#f5f0ea",
-          gold: "#c8a96e",
+          brown: "#4a443a",
+          "brown-dark": "#3d3830",
+          "brown-light": "#5d574d",
+          cream: "#f7f3e8",
+          green: "#a4b38d",
+          // 後方互換用エイリアス（管理画面のadmin-inputなどで使用）
+          navy: "#4a443a",
+          "navy-dark": "#3d3830",
+          "navy-light": "#5d574d",
+          beige: "#f7f3e8",
+          gold: "#a4b38d",
         },
       },
       fontFamily: {
-        sans: ["var(--font-noto-sans-jp)", "Noto Sans JP", "sans-serif"],
+        sans: ["var(--font-zen-maru)", "Zen Maru Gothic", "sans-serif"],
       },
       animation: {
         "fade-up": "fadeUp 0.8s ease-out forwards",
