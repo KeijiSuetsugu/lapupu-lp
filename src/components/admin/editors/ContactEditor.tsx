@@ -2,13 +2,16 @@
 
 import { ContactData } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 
 interface Props {
   data: ContactData;
   onChange: (data: ContactData) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
-export default function ContactEditor({ data, onChange }: Props) {
+export default function ContactEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const update = (key: keyof ContactData, value: string) => {
     onChange({ ...data, [key]: value });
   };
@@ -39,6 +42,11 @@ export default function ContactEditor({ data, onChange }: Props) {
           onChange={(e) => update("reservationNote", e.target.value)}
           rows={3}
           className="admin-input"
+        />
+        <CharSizeEditor
+          text={data.reservationNote}
+          charSizes={charStyles["contact.reservationNote"] ?? []}
+          onChange={(sizes) => onCharStyleChange("contact.reservationNote", sizes)}
         />
       </Field>
     </div>

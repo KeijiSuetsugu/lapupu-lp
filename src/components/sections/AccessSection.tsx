@@ -1,13 +1,13 @@
 import { MapPin, Phone, Clock } from "lucide-react";
-import { AccessData, SiteSettings } from "@/lib/types";
-import { getHeadingSize } from "@/lib/fontSizes";
+import { AccessData } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: AccessData;
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function AccessSection({ data, settings }: Props) {
+export default function AccessSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-warm">
       <div className="container-max">
@@ -16,7 +16,7 @@ export default function AccessSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Access
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
             アクセス
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -58,7 +58,11 @@ export default function AccessSection({ data, settings }: Props) {
                   Address
                 </p>
                 <p className="text-lapupu-navy font-light leading-relaxed">
-                  {data.address}
+                  <StyledText
+                    text={data.address}
+                    charSizes={charStyles["access.address"]}
+                    defaultSize={16}
+                  />
                 </p>
               </div>
             </div>
@@ -72,7 +76,13 @@ export default function AccessSection({ data, settings }: Props) {
                 <p className="text-xs tracking-[0.2em] text-lapupu-gold mb-1 uppercase">
                   Contact
                 </p>
-                <p className="text-lapupu-navy font-light">{data.tel}</p>
+                <p className="text-lapupu-navy font-light">
+                  <StyledText
+                    text={data.tel}
+                    charSizes={charStyles["access.tel"]}
+                    defaultSize={16}
+                  />
+                </p>
               </div>
             </div>
 
@@ -89,10 +99,18 @@ export default function AccessSection({ data, settings }: Props) {
                   {data.hours.map((hour, i) => (
                     <div key={i} className="flex gap-4 text-sm">
                       <span className="text-lapupu-navy/60 w-28 font-light">
-                        {hour.days}
+                        <StyledText
+                          text={hour.days}
+                          charSizes={charStyles[`access.hours.${i}.days`]}
+                          defaultSize={14}
+                        />
                       </span>
                       <span className="text-lapupu-navy font-medium">
-                        {hour.time}
+                        <StyledText
+                          text={hour.time}
+                          charSizes={charStyles[`access.hours.${i}.time`]}
+                          defaultSize={14}
+                        />
                       </span>
                     </div>
                   ))}

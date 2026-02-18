@@ -13,7 +13,6 @@ import StaffEditor from "./editors/StaffEditor";
 import AccessEditor from "./editors/AccessEditor";
 import ContactEditor from "./editors/ContactEditor";
 import FooterEditor from "./editors/FooterEditor";
-import SettingsEditor from "./editors/SettingsEditor";
 
 interface Props {
   initialContent: ContentData;
@@ -25,6 +24,15 @@ export default function AdminDashboard({ initialContent }: Props) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+
+  const charStyles = content.charStyles ?? {};
+
+  const updateCharStyle = (key: string, sizes: number[]) => {
+    setContent({
+      ...content,
+      charStyles: { ...charStyles, [key]: sizes },
+    });
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -104,17 +112,12 @@ export default function AdminDashboard({ initialContent }: Props) {
 
         {/* Section editors */}
         <div className="space-y-4">
-          <SectionEditor title="サイト設定（文字サイズ）" defaultOpen>
-            <SettingsEditor
-              data={content.settings}
-              onChange={(settings) => setContent({ ...content, settings })}
-            />
-          </SectionEditor>
-
           <SectionEditor title="Hero（ファーストビュー）">
             <HeroEditor
               data={content.hero}
               onChange={(hero) => setContent({ ...content, hero })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -122,6 +125,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <ConceptEditor
               data={content.concept}
               onChange={(concept) => setContent({ ...content, concept })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -129,6 +134,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <FeaturesEditor
               data={content.features}
               onChange={(features) => setContent({ ...content, features })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -136,6 +143,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <MenuEditor
               data={content.menu}
               onChange={(menu) => setContent({ ...content, menu })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -143,6 +152,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <VoiceEditor
               data={content.voice}
               onChange={(voice) => setContent({ ...content, voice })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -150,6 +161,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <StaffEditor
               data={content.staff}
               onChange={(staff) => setContent({ ...content, staff })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -157,6 +170,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <AccessEditor
               data={content.access}
               onChange={(access) => setContent({ ...content, access })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -164,6 +179,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <ContactEditor
               data={content.contact}
               onChange={(contact) => setContent({ ...content, contact })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
 
@@ -171,6 +188,8 @@ export default function AdminDashboard({ initialContent }: Props) {
             <FooterEditor
               data={content.footer}
               onChange={(footer) => setContent({ ...content, footer })}
+              charStyles={charStyles}
+              onCharStyleChange={updateCharStyle}
             />
           </SectionEditor>
         </div>

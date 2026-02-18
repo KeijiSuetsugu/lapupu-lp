@@ -2,14 +2,17 @@
 
 import { StaffItem } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props {
   data: StaffItem[];
   onChange: (data: StaffItem[]) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
-export default function StaffEditor({ data, onChange }: Props) {
+export default function StaffEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const updateItem = (index: number, key: keyof StaffItem, value: string) => {
     const updated = data.map((item, i) =>
       i === index ? { ...item, [key]: value } : item
@@ -44,6 +47,11 @@ export default function StaffEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "name", e.target.value)}
                 className="admin-input"
               />
+              <CharSizeEditor
+                text={item.name}
+                charSizes={charStyles[`staff.${i}.name`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`staff.${i}.name`, sizes)}
+              />
             </Field>
             <Field label="役職・肩書き">
               <input
@@ -53,6 +61,11 @@ export default function StaffEditor({ data, onChange }: Props) {
                 className="admin-input"
                 placeholder="代表・ヘッドケアセラピスト"
               />
+              <CharSizeEditor
+                text={item.role}
+                charSizes={charStyles[`staff.${i}.role`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`staff.${i}.role`, sizes)}
+              />
             </Field>
             <Field label="自己紹介文">
               <textarea
@@ -60,6 +73,11 @@ export default function StaffEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "bio", e.target.value)}
                 rows={4}
                 className="admin-input"
+              />
+              <CharSizeEditor
+                text={item.bio}
+                charSizes={charStyles[`staff.${i}.bio`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`staff.${i}.bio`, sizes)}
               />
             </Field>
             <Field label="写真URL（/images/staff-1.jpg または外部URL）">

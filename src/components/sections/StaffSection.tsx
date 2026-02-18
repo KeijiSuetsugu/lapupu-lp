@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { StaffItem, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { StaffItem } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: StaffItem[];
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function StaffSection({ data, settings }: Props) {
+export default function StaffSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-light">
       <div className="container-max">
@@ -16,7 +16,7 @@ export default function StaffSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Staff
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
             スタッフ紹介
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -44,14 +44,26 @@ export default function StaffSection({ data, settings }: Props) {
 
               {/* Info */}
               <p className="text-lapupu-gold text-xs tracking-[0.3em] mb-2 uppercase">
-                {member.role}
+                <StyledText
+                  text={member.role}
+                  charSizes={charStyles[`staff.${i}.role`]}
+                  defaultSize={12}
+                />
               </p>
-              <h3 className="text-xl font-medium text-lapupu-navy mb-4">
-                {member.name}
+              <h3 className="font-medium text-lapupu-navy mb-4">
+                <StyledText
+                  text={member.name}
+                  charSizes={charStyles[`staff.${i}.name`]}
+                  defaultSize={20}
+                />
               </h3>
               <div className="h-px w-8 bg-lapupu-gold mx-auto mb-4" />
-              <p className={`text-gray-500 font-light leading-relaxed ${getBodySize(settings)} whitespace-pre-wrap`}>
-                {member.bio}
+              <p className="text-gray-500 font-light leading-relaxed">
+                <StyledText
+                  text={member.bio}
+                  charSizes={charStyles[`staff.${i}.bio`]}
+                  defaultSize={14}
+                />
               </p>
             </div>
           ))}

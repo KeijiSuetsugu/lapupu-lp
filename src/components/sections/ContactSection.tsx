@@ -1,14 +1,12 @@
-import { ContactData, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { ContactData } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: ContactData;
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function ContactSection({ data, settings }: Props) {
-  const lines = data.reservationNote.split("\n");
-
+export default function ContactSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-contact">
       <div className="container-max">
@@ -17,16 +15,18 @@ export default function ContactSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Reservation
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy mb-6`}>
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy mb-6">
             ご予約・お問い合わせ
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mb-10" />
 
           {/* Note */}
-          <div className={`mb-10 text-gray-500 font-light leading-relaxed ${getBodySize(settings)}`}>
-            {lines.map((line, i) => (
-              <p key={i}>{line}</p>
-            ))}
+          <div className="mb-10 text-gray-500 font-light leading-relaxed">
+            <StyledText
+              text={data.reservationNote}
+              charSizes={charStyles["contact.reservationNote"]}
+              defaultSize={14}
+            />
           </div>
 
           {/* Buttons */}

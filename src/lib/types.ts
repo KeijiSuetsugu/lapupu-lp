@@ -67,6 +67,7 @@ export interface SiteSettings {
 
 export interface ContentData {
   settings: SiteSettings;
+  charStyles?: Record<string, number[]>;
   hero: HeroData;
   concept: ConceptData;
   features: FeatureItem[];

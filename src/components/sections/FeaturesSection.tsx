@@ -1,10 +1,10 @@
 import { Sparkles, Heart, Clock, Star, Leaf, Shield } from "lucide-react";
-import { FeatureItem, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { FeatureItem } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: FeatureItem[];
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ElementType> = {
   shield: Shield,
 };
 
-export default function FeaturesSection({ data, settings }: Props) {
+export default function FeaturesSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-warm">
       <div className="container-max">
@@ -25,7 +25,7 @@ export default function FeaturesSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Features
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
             Lapupuが選ばれる理由
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -44,10 +44,18 @@ export default function FeaturesSection({ data, settings }: Props) {
                   <Icon className="w-7 h-7 text-lapupu-navy group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-lg font-medium text-lapupu-navy mb-4 leading-snug">
-                  {feature.title}
+                  <StyledText
+                    text={feature.title}
+                    charSizes={charStyles[`features.${i}.title`]}
+                    defaultSize={18}
+                  />
                 </h3>
-                <p className={`text-gray-500 font-light leading-relaxed ${getBodySize(settings)} whitespace-pre-wrap`}>
-                  {feature.body}
+                <p className="text-gray-500 font-light leading-relaxed">
+                  <StyledText
+                    text={feature.body}
+                    charSizes={charStyles[`features.${i}.body`]}
+                    defaultSize={14}
+                  />
                 </p>
               </div>
             );

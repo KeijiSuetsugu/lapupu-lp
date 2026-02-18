@@ -1,15 +1,13 @@
 import Image from "next/image";
-import { ConceptData, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { ConceptData } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: ConceptData;
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function ConceptSection({ data, settings }: Props) {
-  const lines = data.body.split("\n");
-
+export default function ConceptSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-light">
       <div className="container-max">
@@ -41,14 +39,20 @@ export default function ConceptSection({ data, settings }: Props) {
             <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
               Concept
             </p>
-            <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy mb-8 leading-snug`}>
-              {data.title}
+            <h2 className="font-light text-lapupu-navy mb-8 leading-snug">
+              <StyledText
+                text={data.title}
+                charSizes={charStyles["concept.title"]}
+                defaultSize={30}
+              />
             </h2>
             <div className="h-px w-12 bg-lapupu-gold mb-8" />
-            <div className={`space-y-4 text-gray-600 font-light leading-relaxed ${getBodySize(settings)}`}>
-              {lines.map((line, i) => (
-                <p key={i}>{line}</p>
-              ))}
+            <div className="text-gray-600 font-light leading-relaxed">
+              <StyledText
+                text={data.body}
+                charSizes={charStyles["concept.body"]}
+                defaultSize={14}
+              />
             </div>
           </div>
         </div>

@@ -2,13 +2,16 @@
 
 import { HeroData } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 
 interface Props {
   data: HeroData;
   onChange: (data: HeroData) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
-export default function HeroEditor({ data, onChange }: Props) {
+export default function HeroEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const update = (key: keyof HeroData, value: string) => {
     onChange({ ...data, [key]: value });
   };
@@ -22,6 +25,11 @@ export default function HeroEditor({ data, onChange }: Props) {
           rows={3}
           className="admin-input"
         />
+        <CharSizeEditor
+          text={data.catchcopy}
+          charSizes={charStyles["hero.catchcopy"] ?? []}
+          onChange={(sizes) => onCharStyleChange("hero.catchcopy", sizes)}
+        />
       </Field>
       <Field label="サブテキスト（所在地・補足）">
         <input
@@ -30,6 +38,11 @@ export default function HeroEditor({ data, onChange }: Props) {
           onChange={(e) => update("subtext", e.target.value)}
           className="admin-input"
         />
+        <CharSizeEditor
+          text={data.subtext}
+          charSizes={charStyles["hero.subtext"] ?? []}
+          onChange={(sizes) => onCharStyleChange("hero.subtext", sizes)}
+        />
       </Field>
       <Field label="CTAボタンのテキスト">
         <input
@@ -37,6 +50,11 @@ export default function HeroEditor({ data, onChange }: Props) {
           value={data.ctaLabel}
           onChange={(e) => update("ctaLabel", e.target.value)}
           className="admin-input"
+        />
+        <CharSizeEditor
+          text={data.ctaLabel}
+          charSizes={charStyles["hero.ctaLabel"] ?? []}
+          onChange={(sizes) => onCharStyleChange("hero.ctaLabel", sizes)}
         />
       </Field>
       <Field label="CTAボタンのリンク先URL（LINE等）">

@@ -1,12 +1,12 @@
-import { MenuItem, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { MenuItem } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: MenuItem[];
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function MenuSection({ data, settings }: Props) {
+export default function MenuSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-gradient">
       <div className="container-max">
@@ -15,7 +15,7 @@ export default function MenuSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Menu & Price
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-lapupu-navy`}>
+          <h2 className="text-3xl md:text-4xl font-light text-lapupu-navy">
             メニュー・料金
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -30,16 +30,28 @@ export default function MenuSection({ data, settings }: Props) {
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium text-lapupu-navy mb-2 group-hover:text-lapupu-navy-dark">
-                    {item.name}
+                  <h3 className="font-medium text-lapupu-navy mb-2 group-hover:text-lapupu-navy-dark">
+                    <StyledText
+                      text={item.name}
+                      charSizes={charStyles[`menu.${i}.name`]}
+                      defaultSize={18}
+                    />
                   </h3>
-                  <p className={`text-gray-500 font-light ${getBodySize(settings)} leading-relaxed whitespace-pre-wrap`}>
-                    {item.description}
+                  <p className="text-gray-500 font-light leading-relaxed">
+                    <StyledText
+                      text={item.description}
+                      charSizes={charStyles[`menu.${i}.description`]}
+                      defaultSize={14}
+                    />
                   </p>
                 </div>
                 <div className="md:ml-8 flex-shrink-0">
-                  <span className="text-2xl md:text-3xl font-light text-lapupu-navy tracking-wider">
-                    {item.price}
+                  <span className="font-light text-lapupu-navy tracking-wider">
+                    <StyledText
+                      text={item.price}
+                      charSizes={charStyles[`menu.${i}.price`]}
+                      defaultSize={28}
+                    />
                   </span>
                 </div>
               </div>

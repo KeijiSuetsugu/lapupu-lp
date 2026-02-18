@@ -1,13 +1,13 @@
 import { Star } from "lucide-react";
-import { VoiceItem, SiteSettings } from "@/lib/types";
-import { getHeadingSize, getBodySize } from "@/lib/fontSizes";
+import { VoiceItem } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: VoiceItem[];
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function VoiceSection({ data, settings }: Props) {
+export default function VoiceSection({ data, charStyles = {} }: Props) {
   return (
     <section className="section-padding bg-luxury-navy">
       <div className="container-max">
@@ -16,7 +16,7 @@ export default function VoiceSection({ data, settings }: Props) {
           <p className="text-lapupu-gold text-xs tracking-[0.4em] mb-4 uppercase">
             Voice
           </p>
-          <h2 className={`${getHeadingSize(settings)} font-light text-white`}>
+          <h2 className="text-3xl md:text-4xl font-light text-white">
             お客様の声
           </h2>
           <div className="h-px w-12 bg-lapupu-gold mx-auto mt-6" />
@@ -42,13 +42,21 @@ export default function VoiceSection({ data, settings }: Props) {
               </div>
 
               {/* Text */}
-              <p className={`text-white/80 font-light leading-relaxed ${getBodySize(settings)} mb-6 whitespace-pre-wrap`}>
-                {voice.text}
+              <p className="text-white/80 font-light leading-relaxed mb-6">
+                <StyledText
+                  text={voice.text}
+                  charSizes={charStyles[`voice.${i}.text`]}
+                  defaultSize={14}
+                />
               </p>
 
               {/* Name */}
-              <p className="text-lapupu-gold text-sm tracking-wider border-t border-white/10 pt-4">
-                {voice.name}
+              <p className="text-lapupu-gold tracking-wider border-t border-white/10 pt-4">
+                <StyledText
+                  text={voice.name}
+                  charSizes={charStyles[`voice.${i}.name`]}
+                  defaultSize={14}
+                />
               </p>
             </div>
           ))}

@@ -2,14 +2,17 @@
 
 import { MenuItem } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props {
   data: MenuItem[];
   onChange: (data: MenuItem[]) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
-export default function MenuEditor({ data, onChange }: Props) {
+export default function MenuEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const updateItem = (index: number, key: keyof MenuItem, value: string) => {
     const updated = data.map((item, i) =>
       i === index ? { ...item, [key]: value } : item
@@ -38,12 +41,17 @@ export default function MenuEditor({ data, onChange }: Props) {
           <p className="text-xs text-gray-400 mb-3">メニュー {i + 1}</p>
           <div className="space-y-3">
             <Field label="メニュー名">
-              <input
-                type="text"
+              <textarea
                 value={item.name}
                 onChange={(e) => updateItem(i, "name", e.target.value)}
+                rows={3}
                 className="admin-input"
-                placeholder="ヘッドケア 60分"
+                placeholder={"脳疲労×小顔\nヘッドセラピー"}
+              />
+              <CharSizeEditor
+                text={item.name}
+                charSizes={charStyles[`menu.${i}.name`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`menu.${i}.name`, sizes)}
               />
             </Field>
             <Field label="料金（例: ¥8,000）">
@@ -54,6 +62,11 @@ export default function MenuEditor({ data, onChange }: Props) {
                 className="admin-input"
                 placeholder="¥8,000"
               />
+              <CharSizeEditor
+                text={item.price}
+                charSizes={charStyles[`menu.${i}.price`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`menu.${i}.price`, sizes)}
+              />
             </Field>
             <Field label="説明文">
               <textarea
@@ -61,6 +74,11 @@ export default function MenuEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "description", e.target.value)}
                 rows={2}
                 className="admin-input"
+              />
+              <CharSizeEditor
+                text={item.description}
+                charSizes={charStyles[`menu.${i}.description`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`menu.${i}.description`, sizes)}
               />
             </Field>
           </div>

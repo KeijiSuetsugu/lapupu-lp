@@ -21,6 +21,9 @@ export async function getContent(): Promise<ContentData> {
         if (!data.settings) {
           data.settings = defaultSettings;
         }
+        if (!data.charStyles) {
+          data.charStyles = {};
+        }
         return data;
       }
     } catch {

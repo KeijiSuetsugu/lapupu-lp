@@ -2,14 +2,17 @@
 
 import { VoiceItem } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props {
   data: VoiceItem[];
   onChange: (data: VoiceItem[]) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
-export default function VoiceEditor({ data, onChange }: Props) {
+export default function VoiceEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const updateItem = (index: number, key: keyof VoiceItem, value: string | number) => {
     const updated = data.map((item, i) =>
       i === index ? { ...item, [key]: value } : item
@@ -45,6 +48,11 @@ export default function VoiceEditor({ data, onChange }: Props) {
                 className="admin-input"
                 placeholder="30代 女性"
               />
+              <CharSizeEditor
+                text={item.name}
+                charSizes={charStyles[`voice.${i}.name`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`voice.${i}.name`, sizes)}
+              />
             </Field>
             <Field label="コメント">
               <textarea
@@ -52,6 +60,11 @@ export default function VoiceEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "text", e.target.value)}
                 rows={3}
                 className="admin-input"
+              />
+              <CharSizeEditor
+                text={item.text}
+                charSizes={charStyles[`voice.${i}.text`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`voice.${i}.text`, sizes)}
               />
             </Field>
             <Field label="評価（1〜5）">

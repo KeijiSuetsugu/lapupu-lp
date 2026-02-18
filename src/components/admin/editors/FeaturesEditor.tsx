@@ -2,16 +2,19 @@
 
 import { FeatureItem } from "@/lib/types";
 import Field from "../Field";
+import CharSizeEditor from "../CharSizeEditor";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props {
   data: FeatureItem[];
   onChange: (data: FeatureItem[]) => void;
+  charStyles: Record<string, number[]>;
+  onCharStyleChange: (key: string, sizes: number[]) => void;
 }
 
 const ICON_OPTIONS = ["sparkles", "heart", "clock", "star", "leaf", "shield"];
 
-export default function FeaturesEditor({ data, onChange }: Props) {
+export default function FeaturesEditor({ data, onChange, charStyles, onCharStyleChange }: Props) {
   const updateItem = (index: number, key: keyof FeatureItem, value: string) => {
     const updated = data.map((item, i) =>
       i === index ? { ...item, [key]: value } : item
@@ -59,6 +62,11 @@ export default function FeaturesEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "title", e.target.value)}
                 className="admin-input"
               />
+              <CharSizeEditor
+                text={item.title}
+                charSizes={charStyles[`features.${i}.title`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`features.${i}.title`, sizes)}
+              />
             </Field>
             <Field label="説明文">
               <textarea
@@ -66,6 +74,11 @@ export default function FeaturesEditor({ data, onChange }: Props) {
                 onChange={(e) => updateItem(i, "body", e.target.value)}
                 rows={3}
                 className="admin-input"
+              />
+              <CharSizeEditor
+                text={item.body}
+                charSizes={charStyles[`features.${i}.body`] ?? []}
+                onChange={(sizes) => onCharStyleChange(`features.${i}.body`, sizes)}
               />
             </Field>
           </div>

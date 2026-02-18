@@ -1,17 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { HeroData, SiteSettings } from "@/lib/types";
-import { getHeroSize } from "@/lib/fontSizes";
+import { HeroData } from "@/lib/types";
+import StyledText from "@/components/StyledText";
 
 interface Props {
   data: HeroData;
-  settings?: SiteSettings;
+  charStyles?: Record<string, number[]>;
 }
 
-export default function HeroSection({ data, settings }: Props) {
-  const lines = data.catchcopy.split("\n");
-
+export default function HeroSection({ data, charStyles = {} }: Props) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -38,12 +36,13 @@ export default function HeroSection({ data, settings }: Props) {
         </p>
 
         {/* Main catchcopy */}
-        <h1 className={`${getHeroSize(settings)} font-light leading-tight mb-6 tracking-wide`}>
-          {lines.map((line, i) => (
-            <span key={i} className="block">
-              {line}
-            </span>
-          ))}
+        <h1 className="font-light leading-tight mb-6 tracking-wide">
+          <StyledText
+            text={data.catchcopy}
+            charSizes={charStyles["hero.catchcopy"]}
+            defaultSize={40}
+            className="block"
+          />
         </h1>
 
         {/* Divider */}
@@ -54,8 +53,12 @@ export default function HeroSection({ data, settings }: Props) {
         </div>
 
         {/* Subtext */}
-        <p className="text-base md:text-lg text-white/80 mb-12 font-light tracking-wider">
-          {data.subtext}
+        <p className="text-white/80 mb-12 font-light tracking-wider">
+          <StyledText
+            text={data.subtext}
+            charSizes={charStyles["hero.subtext"]}
+            defaultSize={18}
+          />
         </p>
 
         {/* CTA Button */}
@@ -65,7 +68,13 @@ export default function HeroSection({ data, settings }: Props) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-white text-lapupu-navy px-10 py-4 text-sm md:text-base tracking-[0.2em] font-medium hover:bg-lapupu-gold hover:text-white transition-all duration-300 group"
         >
-          <span>{data.ctaLabel}</span>
+          <span>
+            <StyledText
+              text={data.ctaLabel}
+              charSizes={charStyles["hero.ctaLabel"]}
+              defaultSize={14}
+            />
+          </span>
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

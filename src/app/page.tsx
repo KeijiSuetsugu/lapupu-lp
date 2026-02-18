@@ -11,19 +11,19 @@ import Footer from "@/components/sections/Footer";
 
 export default async function Home() {
   const content = await getContent();
-  const settings = content.settings;
+  const charStyles = content.charStyles ?? {};
 
   return (
     <main>
-      <HeroSection data={content.hero} settings={settings} />
-      <ConceptSection data={content.concept} settings={settings} />
-      <FeaturesSection data={content.features} settings={settings} />
-      <MenuSection data={content.menu} settings={settings} />
-      <VoiceSection data={content.voice} settings={settings} />
-      <StaffSection data={content.staff} settings={settings} />
-      <AccessSection data={content.access} settings={settings} />
-      <ContactSection data={content.contact} settings={settings} />
-      <Footer data={content.footer} />
+      <HeroSection data={content.hero} charStyles={charStyles} />
+      <ConceptSection data={content.concept} charStyles={charStyles} />
+      <FeaturesSection data={content.features} charStyles={charStyles} />
+      <MenuSection data={content.menu} charStyles={charStyles} />
+      <VoiceSection data={content.voice} charStyles={charStyles} />
+      <StaffSection data={content.staff} charStyles={charStyles} />
+      <AccessSection data={content.access} charStyles={charStyles} />
+      <ContactSection data={content.contact} charStyles={charStyles} />
+      <Footer data={content.footer} charStyles={charStyles} />
     </main>
   );
 }
