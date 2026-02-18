@@ -3,6 +3,7 @@
 import { ConceptData } from "@/lib/types";
 import Field from "../Field";
 import CharSizeEditor from "../CharSizeEditor";
+import ImageUploader from "../ImageUploader";
 
 interface Props {
   data: ConceptData;
@@ -44,13 +45,17 @@ export default function ConceptEditor({ data, onChange, charStyles, onCharStyleC
           onChange={(sizes) => onCharStyleChange("concept.body", sizes)}
         />
       </Field>
-      <Field label="画像URL（/images/concept.jpg または外部URL）">
+      <Field label="画像">
         <input
           type="text"
           value={data.imageUrl}
           onChange={(e) => update("imageUrl", e.target.value)}
           className="admin-input"
           placeholder="/images/concept.jpg"
+        />
+        <ImageUploader
+          currentUrl={data.imageUrl}
+          onUpload={(url) => update("imageUrl", url)}
         />
       </Field>
     </div>

@@ -3,6 +3,7 @@
 import { HeroData } from "@/lib/types";
 import Field from "../Field";
 import CharSizeEditor from "../CharSizeEditor";
+import ImageUploader from "../ImageUploader";
 
 interface Props {
   data: HeroData;
@@ -66,7 +67,7 @@ export default function HeroEditor({ data, onChange, charStyles, onCharStyleChan
           placeholder="https://line.me/..."
         />
       </Field>
-      <Field label="背景画像URL（/images/hero-bg.jpg または外部URL）">
+      <Field label="背景画像">
         <input
           type="text"
           value={data.bgImageUrl}
@@ -74,9 +75,10 @@ export default function HeroEditor({ data, onChange, charStyles, onCharStyleChan
           className="admin-input"
           placeholder="/images/hero-bg.jpg"
         />
-        <p className="text-xs text-gray-400 mt-1">
-          ※ 画像ファイルは public/images/ フォルダに配置してください
-        </p>
+        <ImageUploader
+          currentUrl={data.bgImageUrl}
+          onUpload={(url) => update("bgImageUrl", url)}
+        />
       </Field>
     </div>
   );

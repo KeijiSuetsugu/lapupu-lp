@@ -3,6 +3,7 @@
 import { StaffItem } from "@/lib/types";
 import Field from "../Field";
 import CharSizeEditor from "../CharSizeEditor";
+import ImageUploader from "../ImageUploader";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props {
@@ -80,13 +81,17 @@ export default function StaffEditor({ data, onChange, charStyles, onCharStyleCha
                 onChange={(sizes) => onCharStyleChange(`staff.${i}.bio`, sizes)}
               />
             </Field>
-            <Field label="写真URL（/images/staff-1.jpg または外部URL）">
+            <Field label="写真">
               <input
                 type="text"
                 value={item.imageUrl}
                 onChange={(e) => updateItem(i, "imageUrl", e.target.value)}
                 className="admin-input"
                 placeholder="/images/staff-1.jpg"
+              />
+              <ImageUploader
+                currentUrl={item.imageUrl}
+                onUpload={(url) => updateItem(i, "imageUrl", url)}
               />
             </Field>
           </div>
@@ -95,7 +100,7 @@ export default function StaffEditor({ data, onChange, charStyles, onCharStyleCha
 
       <button
         onClick={addItem}
-        className="flex items-center gap-2 text-sm text-lapupu-navy hover:text-lapupu-navy-dark transition-colors"
+        className="flex items-center gap-2 text-sm text-lapupu-brown hover:text-lapupu-brown-dark transition-colors"
       >
         <Plus className="w-4 h-4" />
         スタッフを追加
